@@ -132,42 +132,52 @@
     }
 
     .ring {
-      width: 170px;
+      width: 176px;
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       position: relative;
-      box-shadow: inset 0 10px 18px rgba(255, 255, 255, 0.18), inset 0 -14px 24px rgba(0, 0, 0, 0.42), 0 20px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 26px 35px rgba(0, 0, 0, 0.45), inset 0 12px 15px rgba(255, 255, 255, 0.2), inset 0 -16px 22px rgba(0, 0, 0, 0.45);
     }
 
     .ring::before {
       content: "";
       position: absolute;
-      inset: 5px;
+      inset: 4px;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), inset 0 -8px 10px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05) 32%, rgba(0, 0, 0, 0.2) 61%, rgba(255, 255, 255, 0.2));
+      mix-blend-mode: screen;
+      opacity: 0.8;
       pointer-events: none;
     }
 
     .ring::after {
       content: "";
       position: absolute;
-      width: 56%;
-      height: 56%;
-      background: radial-gradient(circle at 50% 45%, #05101f, #04070f 74%);
+      width: 57%;
+      height: 57%;
+      background: radial-gradient(circle at 50% 45%, #041124, #02050d 76%);
       border-radius: 50%;
-      top: 22%;
-      left: 22%;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.55);
+      top: 21.5%;
+      left: 21.5%;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 20px rgba(0, 8, 24, 0.35);
+    }
+
+    .ring span {
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      pointer-events: none;
     }
 
     .heritage {
-      background: conic-gradient(from 245deg at 50% 50%, #f2f6ff 0deg, #c6cedd 95deg, #8a93a7 190deg, #606a80 280deg, #e3e9f6 360deg);
-      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: conic-gradient(from 228deg, #f5f8ff 0deg, #d9dfec 62deg, #aeb7c8 140deg, #7f8a9f 220deg, #596177 290deg, #dce3f0 360deg);
+      border: 1px solid rgba(223, 232, 255, 0.65);
     }
 
     .horizon {
-      background: conic-gradient(from 250deg at 50% 50%, #f0ddb2 0deg, #d0b37c 110deg, #8e754a 205deg, #6f5c3b 295deg, #ead6a5 360deg);
-      border: 1px solid rgba(215, 191, 138, 0.62);
+      background: conic-gradient(from 230deg, #f2e2ba 0deg, #ddc58f 68deg, #b99d67 148deg, #907648 236deg, #6f5935 304deg, #ead8ab 360deg);
+      border: 1px solid rgba(235, 205, 142, 0.64);
     }
 
     .labels {
@@ -230,6 +240,109 @@
       font-size: 1.25rem;
       margin-bottom: 12px;
     }
+
+    .signal-visuals {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .signal-card,
+    .metrics-card {
+      background: linear-gradient(145deg, #111522, #0a0c12);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .signal-header {
+      display: flex;
+      justify-content: space-between;
+      color: #cfd6e6;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .signal-wave {
+      height: 130px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(19, 26, 42, 0.65), rgba(5, 7, 12, 0.9));
+      border: 1px solid rgba(160, 180, 220, 0.25);
+    }
+
+    .signal-wave::before,
+    .signal-wave::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #8ec5ff, #d0e1ff, #8ec5ff, transparent);
+      box-shadow: 0 0 16px rgba(142, 197, 255, 0.65);
+      animation: scan 3.5s linear infinite;
+    }
+
+    .signal-wave::after {
+      top: 70%;
+      animation-delay: -1.75s;
+      opacity: 0.8;
+    }
+
+    .signal-wave::before { top: 30%; }
+
+    .ring-dots {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 24% 42%, rgba(129, 197, 255, 0.95) 0 4px, transparent 5px),
+        radial-gradient(circle at 48% 58%, rgba(245, 219, 154, 0.95) 0 4px, transparent 5px),
+        radial-gradient(circle at 74% 35%, rgba(143, 236, 197, 0.95) 0 4px, transparent 5px);
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+
+    .metric {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metric:last-child { border-bottom: 0; }
+
+    .metric-title {
+      color: #d8deeb;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .metric-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #1b2130;
+      overflow: hidden;
+    }
+
+    .metric-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #91cbff, #d5e6ff);
+    }
+
+    .metric-fill.gold { background: linear-gradient(90deg, #c5a569, #f0d8a3); }
+    .metric-fill.green { background: linear-gradient(90deg, #77d8b4, #b5f0da); }
+
+    @keyframes scan {
+      0% { transform: translateY(-6px); }
+      50% { transform: translateY(8px); }
+      100% { transform: translateY(-6px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.75; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
 
     .cycle {
       margin-top: 28px;
@@ -305,7 +418,8 @@
     @media (max-width: 960px) {
       .hero-grid,
       .features,
-      .cycle {
+      .cycle,
+      .signal-visuals {
         grid-template-columns: 1fr;
       }
 
@@ -333,8 +447,8 @@
       <div class="ring-showcase" aria-label="Oura Ring Heritage and Horizon styles">
         <div>
           <div class="rings">
-            <div class="ring heritage" data-ring="heritage"></div>
-            <div class="ring horizon" data-ring="horizon"></div>
+            <div class="ring heritage" data-ring="heritage"><span></span></div>
+            <div class="ring horizon" data-ring="horizon"><span></span></div>
           </div>
           <div class="labels">
             <span>Heritage</span>
@@ -374,6 +488,40 @@
         </article>
       </div>
       <div class="feature-detail" id="featureDetail" aria-live="polite">Use your Readiness Score as a single executive signal each morning to decide whether to push hard, train light, or prioritize recovery.</div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="container">
+      <p class="eyebrow">Live Function Visualization</p>
+      <h2>How Oura translates signals into action</h2>
+      <p>From optical heart-rate sensing to temperature trends and recovery models, your ring turns raw biosignals into a clear readiness layer you can act on every day.</p>
+      <div class="signal-visuals">
+        <div class="signal-card">
+          <div class="signal-header">
+            <span>Sensor Stream</span>
+            <span>Real-time baseline lock</span>
+          </div>
+          <div class="signal-wave" aria-label="Oura biometric signal visualization">
+            <div class="ring-dots"></div>
+          </div>
+        </div>
+        <div class="metrics-card">
+          <div class="metric">
+            <div class="metric-title">Readiness Composite · 87%</div>
+            <div class="metric-bar"><div class="metric-fill" style="width: 87%"></div></div>
+          </div>
+          <div class="metric">
+            <div class="metric-title">Sleep Recovery · 79%</div>
+            <div class="metric-bar"><div class="metric-fill gold" style="width: 79%"></div></div>
+          </div>
+          <div class="metric">
+            <div class="metric-title">Temperature Stability · 92%</div>
+            <div class="metric-bar"><div class="metric-fill green" style="width: 92%"></div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
